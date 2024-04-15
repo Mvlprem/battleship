@@ -12,10 +12,9 @@
 }
 :root {
   --text-color: #0e0e0c;
-  --accent-color: #756b80;
   --primary-color: #cacec5;
-  --secondary-color: #d8d8df;
-  --background-color: #f3f3f1;
+  --secondary-color: #b4b4ff;
+  --background-color: #ffffff;
 }
 body {
   display: grid;
@@ -27,7 +26,6 @@ body {
 }
 
 /* End game Dialog styles */
-
 .end-game {
   width: max-content;
   padding: 2rem 4rem;
@@ -36,12 +34,12 @@ body {
   box-shadow: 10px 10px 0px 0px rgb(0, 0, 0, 0.5);
 }
 .end-game > button {
+  cursor: pointer;
   margin-top: 1rem;
   padding: 0.5rem 1rem;
   font: bold 1rem 'Inter';
-  border: 2px solid var(--text-color);
   border-radius: 0.3rem;
-  background-color: rgba(158, 252, 198, 255);
+  background-color: var(--secondary-color);
 }
 
 /* Dialog styles */
@@ -51,9 +49,10 @@ dialog {
   position: absolute;
   border: none;
   transform: translate(-50%, -50%);
+  overflow: -moz-scrollbars-none;
 }
-dialog::backdrop {
-  background-color: var(--accent-color);
+dialog::-webkit-scrollbar {
+  width: 0 !important;
 }
 .popup {
   display: flex;
@@ -61,20 +60,20 @@ dialog::backdrop {
   gap: 1rem;
   font: 1rem 'Inter';
   padding: 1rem 2rem;
-  border: 2px solid var(--text-color);
-  background-color: var(--background-color);
 }
 .popup span {
   border-bottom: 1px solid var(--accent-color);
 }
 .popup button {
+  cursor: pointer;
+  outline: none;
   width: max-content;
   margin: auto;
   padding: 0.5rem 1rem;
   border-radius: 0.3rem;
   font: 1rem 'Inter';
   color: var(--text-color);
-  background-color: var(--secondary-color);
+  background-color: var(--background-color);
 }
 
 /* Header styles */
@@ -97,6 +96,9 @@ header > p {
 .game-board > .player-board {
   pointer-events: none;
 }
+.computer-board {
+  cursor: pointer;
+}
 .player-board,
 .computer-board {
   width: 400px;
@@ -104,12 +106,11 @@ header > p {
   margin: auto;
   display: flex;
   flex-wrap: wrap;
-  background-color: var(--primary-color);
 }
 .block {
   width: 40px;
   height: 40px;
-  border: 1px solid var(--text-color);
+  border: 1px solid var(--secondary-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -123,7 +124,7 @@ footer p {
 }
 
 /* Media queries */
-@media (width < 600px) {
+@media (width < 900px) {
   header > p {
     font-size: 3rem;
   }
@@ -140,6 +141,9 @@ footer p {
   dialog .block {
     width: 35px;
     height: 35px;
+  }
+  .computer-board {
+    cursor: default;
   }
 }
 
@@ -161,5 +165,8 @@ footer p {
     width: 30px;
     height: 30px;
     font-size: 1.5rem;
+  }
+  .computer-board {
+    cursor: default;
   }
 }
